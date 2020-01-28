@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://org.mnp" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://org.mnp" xmlns:intf="http://org.mnp" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://org.mnp" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="operations">
+    <complexType>
+     <sequence>
+      <element name="Request_id" type="xsd:string"/>
+      <element name="Carrier_id" type="xsd:string"/>
+      <element name="MSISDN" type="xsd:string"/>
+      <element name="Cust_LastName" type="xsd:string"/>
+      <element name="Cust_FirtName" type="xsd:string"/>
+      <element name="DOB" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="operationsResponse">
+    <complexType>
+     <sequence>
+      <element name="operationsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="operationsResponse">
+
+      <wsdl:part element="impl:operationsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="operationsRequest">
+
+      <wsdl:part element="impl:operations" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MNPClass">
+
+      <wsdl:operation name="operations">
+
+         <wsdl:input message="impl:operationsRequest" name="operationsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:operationsResponse" name="operationsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MNPClassSoapBinding" type="impl:MNPClass">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="operations">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="operationsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="operationsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MNPClassService">
+
+      <wsdl:port binding="impl:MNPClassSoapBinding" name="MNPClass">
+
+         <wsdlsoap:address location="http://localhost:8080/Sample_PortOutProcess/services/MNPClass"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
